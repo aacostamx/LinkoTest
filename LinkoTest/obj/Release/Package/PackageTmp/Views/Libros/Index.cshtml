@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LinkoTest.Models.Libro>
+
+@{
+    ViewBag.Title = "Catálogo de libros";
+}
+
+<h2>Catálogo de libros</h2>
+<div class="table-responsive">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreLibro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ISBN)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <a href="Libros/Create"><strong>Agregar libro</strong></a>
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreLibro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ISBN)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.LibroId }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.LibroId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+</table>
+</div>
+
